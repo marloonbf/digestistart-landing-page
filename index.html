@@ -3,138 +3,340 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>DigestiStart™ – Official Website</title>
+  <title>DigestiStart™ – Support for Bloating & Indigestion</title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17749568932"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-17749568932');
+  </script>
 
   <style>
-    html, body {
+    :root {
+      --bg: #020617;
+      --card-bg: #ffffff;
+      --accent: #16a34a;
+      --accent-dark: #15803d;
+      --text-main: #111827;
+      --text-muted: #4b5563;
+      --border-soft: #e5e7eb;
+    }
+
+    * {
       margin: 0;
       padding: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      font-family: system-ui, sans-serif;
-      background: #000;
+      box-sizing: border-box;
     }
 
-    /* Fundo com o site oficial */
-    .bg-frame {
-      position: fixed;
-      inset: 0;
-      width: 100%;
+    html, body {
       height: 100%;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top, #0ea5e9 0, #020617 48%, #020617 100%);
+      color: var(--text-main);
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .page {
+      max-width: 900px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 24px;
+      background: rgba(15, 23, 42, 0.7);
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 20px 45px rgba(15,23,42,0.55);
+      backdrop-filter: blur(10px);
+    }
+
+    @media (max-width: 780px) {
+      .page {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 14px;
+      padding: 22px 22px 18px;
+    }
+
+    .badge-top {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-weight: 700;
+      color: #047857;
+      background: #ecfdf5;
+      border-radius: 999px;
+      padding: 4px 10px;
+      margin-bottom: 10px;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    ul.benefits {
+      list-style: none;
+      margin-bottom: 16px;
+    }
+
+    ul.benefits li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    ul.benefits li::before {
+      content: "✔";
+      color: #16a34a;
+      font-weight: bold;
+      margin-top: 1px;
+    }
+
+    .disclaimer {
+      font-size: 11px;
+      color: #6b7280;
+      margin-top: 4px;
+    }
+
+    .cta-area {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 999px;
       border: none;
-      z-index: 1;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.15s ease;
     }
 
-    /* Banner de cookies estilo Shopee */
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 12px 25px rgba(22, 163, 74, 0.45);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: #e5e7eb;
+      color: #111827;
+    }
+
+    .btn-secondary:hover {
+      background: #d1d5db;
+      transform: translateY(-1px);
+    }
+
+    .trust-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .trust-tag {
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid #e5e7eb;
+      background: #f9fafb;
+      color: #4b5563;
+    }
+
+    /* Right column */
+    .right {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .prod-img {
+      max-width: 260px;
+      width: 100%;
+      display: block;
+    }
+
+    .badges-img {
+      max-width: 100%;
+      width: 100%;
+      object-fit: contain;
+      opacity: 0.96;
+    }
+
+    /* Cookie banner */
     .cookie-banner {
       position: fixed;
       bottom: 0;
       left: 0;
       width: 100%;
       background: #f9fafb;
-      border-top: 1px solid #e5e7eb;
-      padding: 16px 22px;
+      border-top: 1px solid var(--border-soft);
+      padding: 12px 16px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 13px;
       z-index: 9999;
-      font-size: 14px;
-      animation: fadeIn 0.4s ease-out;
     }
 
-    .cookie-text {
-      color: #374151;
-      max-width: 70%;
-      line-height: 1.4;
+    .cookie-banner p {
+      margin: 0;
+      color: #4b5563;
     }
 
-    .cookie-text a {
+    .cookie-banner a {
       color: #2563eb;
       text-decoration: underline;
     }
 
-    .cookie-buttons {
+    .cookie-actions {
       display: flex;
-      gap: 10px;
+      gap: 8px;
+      flex-wrap: wrap;
     }
 
     .cookie-btn {
-      padding: 8px 14px;
-      border-radius: 6px;
+      padding: 7px 12px;
+      border-radius: 999px;
       border: none;
-      cursor: pointer;
+      font-size: 12px;
       font-weight: 600;
-      font-size: 14px;
+      cursor: pointer;
     }
 
-    .cookie-btn.settings {
+    .cookie-settings {
       background: #e5e7eb;
       color: #111827;
     }
 
-    .cookie-btn.accept {
-      background: #16a34a;
-      color: white;
+    .cookie-accept {
+      background: var(--accent);
+      color: #fff;
     }
 
-    .cookie-btn.accept:hover {
-      background: #15803d;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (max-width: 600px) {
+    @media (max-width: 640px) {
       .cookie-banner {
         flex-direction: column;
-        gap: 12px;
-        text-align: center;
-      }
-      .cookie-text {
-        max-width: 100%;
+        align-items: flex-start;
       }
     }
   </style>
 </head>
-
 <body>
 
-  <!-- Site oficial no fundo (HTTPS obrigatório) -->
-  <iframe
-    class="bg-frame"
-    src="https://digestistart24.com/text.php#aff=marloonbfss"
-    loading="lazy"
-  ></iframe>
+  <main class="page">
+    <section class="card">
+      <div class="badge-top">
+        <span class="badge-dot"></span>
+        Official DigestiStart™ Info Page
+      </div>
 
-  <!-- Cookie Banner estilo Shopee -->
+      <h1>Support Bloating & Indigestion Relief with DigestiStart™</h1>
+      <p class="subtitle">
+        DigestiStart™ is a digestive support supplement designed to help ease after-meal discomfort
+        and support a balanced, comfortable gut.
+      </p>
+
+      <ul class="benefits">
+        <li>Helps reduce feelings of bloating.</li>
+        <li>Supports healthy digestion and gut comfort.</li>
+        <li>Fast, convenient capsules for daily use.</li>
+        <li>Carefully selected natural ingredients.</li>
+      </ul>
+
+      <p class="disclaimer">
+        Results may vary. Always read the product label and consult your doctor before using.
+      </p>
+
+      <div class="cta-area">
+        <button class="btn btn-primary"
+          onclick="window.location.href='https://digestistart24.com/text.php#aff=marloonbfss'">
+          Buy DigestiStart™ Now
+        </button>
+
+        <button class="btn btn-secondary"
+          onclick="window.location.href='https://digestistart24.com/text.php#aff=marloonbfss'">
+          View Official Offer
+        </button>
+
+        <div class="trust-row">
+          <span class="trust-tag">Secure checkout</span>
+          <span class="trust-tag">Bloating Relief</span>
+          <span class="trust-tag">Digestive Support</span>
+        </div>
+      </div>
+    </section>
+
+    <aside class="right">
+      <img src="prod_1_bottle.png" class="prod-img" alt="DigestiStart bottle" />
+      <img src="certifications.png" class="badges-img" alt="Quality Certifications" />
+    </aside>
+  </main>
+
+  <!-- Cookie Banner (BOTÕES REDIRECIONANDO PARA AFILIADO) -->
   <div id="cookie-banner" class="cookie-banner">
-    <div class="cookie-text">
-      We use cookies to improve your browsing experience. For more details, please review our
-      <a href="#" target="_blank">Privacy Policy</a>.
-    </div>
+    <p>
+      We use cookies to improve your experience. Read our
+      <a href="#">Privacy Policy</a>.
+    </p>
 
-    <div class="cookie-buttons">
-      <button id="cookie-settings" class="cookie-btn settings">Cookie Settings</button>
-      <button id="cookie-accept" class="cookie-btn accept">Accept All Cookies</button>
+    <div class="cookie-actions">
+      <button class="cookie-btn cookie-settings"
+        onclick="window.location.href='https://digestistart24.com/text.php#aff=marloonbfss'">
+        Cookie Settings
+      </button>
+
+      <button class="cookie-btn cookie-accept"
+        onclick="window.location.href='https://digestistart24.com/text.php#aff=marloonbfss'">
+        Accept All Cookies
+      </button>
     </div>
   </div>
-
-  <script>
-    const banner = document.getElementById("cookie-banner");
-    const acceptBtn = document.getElementById("cookie-accept");
-    const settingsBtn = document.getElementById("cookie-settings");
-
-    acceptBtn.addEventListener("click", () => {
-      banner.style.display = "none";
-    });
-
-    settingsBtn.addEventListener("click", () => {
-      alert("Cookie settings are not available yet.");
-    });
-  </script>
 
 </body>
 </html>
